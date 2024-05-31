@@ -5,7 +5,11 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       -- calling `setup` is optional for customization
-      require('fzf-lua').setup { 'max-perf' }
+      require('fzf-lua').setup { 'max-perf', keymap = {
+        fzf = {
+          ['ctrl-q'] = 'select-all+accept',
+        },
+      } }
     end,
     keys = {
       {
