@@ -5,7 +5,7 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       -- calling `setup` is optional for customization
-      require('fzf-lua').setup { 'default' }
+      require('fzf-lua').setup { 'max-perf' }
     end,
     keys = {
       {
@@ -17,8 +17,8 @@ return {
       },
       { '<leader>sg', '<cmd>FzfLua live_grep<CR>', desc = 'Live Grep' },
       { '<leader>:', '<cmd>FzfLua command_history<CR>', desc = 'Command History' },
-      { '<leader><space>', '<cmd>FzfLua git_files<CR>', desc = 'Git files' },
-      { '<leader>ff', '<cmd>FzfLua files<CR>', desc = 'find or fd on a path' },
+      { '<leader>ff', '<cmd>FzfLua git_files<CR>', desc = 'Git files' },
+      { '<leader><space>', '<cmd>FzfLua files<CR>', desc = 'find or fd on a path' },
       { '<leader>fr', '<cmd>FzfLua oldfiles<CR>', desc = 'Recent' },
       { '<leader>sh', '<cmd>FzfLua live_grep_resume<CR>', desc = 'Previous search' },
       { '<leader>t', '<cmd>FzfLua<CR>', desc = 'FzfLua' },
