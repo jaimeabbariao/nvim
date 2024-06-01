@@ -403,6 +403,7 @@ require('lazy').setup({
             },
           },
         },
+        eslint = {},
       }
 
       -- Ensure the servers and tools above are installed
