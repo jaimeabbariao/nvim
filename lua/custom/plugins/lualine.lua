@@ -9,7 +9,8 @@ return {
 
       -- Color table for highlights
       local colors = {
-        bg = '#00141A',
+        -- bg = '#00141A',
+        bg = '#202328',
         fg = '#FFF',
         yellow = '#B58900',
         cyan = '#2AA198',
