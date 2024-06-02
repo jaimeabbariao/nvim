@@ -405,7 +405,7 @@ require('lazy').setup({
         },
         eslint = {
           settings = {
-            useFlatConfig = true, -- set if using flat config
+            useFlatConfig = false, -- set if using flat config
             experimental = {
               useFlatConfig = nil, -- option not in the latest eslint-lsp
             },
