@@ -1,3 +1,5 @@
+vim.api.nvim_set_hl(0, 'OilFloatBackground', { bg = '#000000' })
+
 return {
   {
     'stevearc/oil.nvim',
@@ -9,9 +11,9 @@ return {
       -- See :help oil-columns
       columns = {
         'icon',
-        -- "permissions",
-        -- "size",
-        -- "mtime",
+        'permissions',
+        'size',
+        'mtime',
       },
       -- Buffer-local options to use for oil buffers
       buf_options = {
@@ -28,6 +30,7 @@ return {
         list = false,
         conceallevel = 3,
         concealcursor = 'nvic',
+        winhighlight = 'NormalFloat:OilFloatBackground',
       },
       -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
       delete_to_trash = false,
@@ -124,7 +127,7 @@ return {
         max_height = 0,
         border = 'rounded',
         win_options = {
-          winblend = 0,
+          winhighlight = 'NormalFloat:OilFloatBackground',
         },
         -- This is the config that will be passed to nvim_open_win.
         -- Change values here to customize the layout
@@ -152,6 +155,7 @@ return {
         height = nil,
         border = 'rounded',
         win_options = {
+          winhighlight = 'NormalFloat:OilFloatBackground',
           winblend = 0,
         },
         -- Whether the preview window is automatically updated when the cursor is moved
@@ -168,6 +172,7 @@ return {
         border = 'rounded',
         minimized_border = 'none',
         win_options = {
+          winhighlight = 'NormalFloat:OilFloatBackground',
           winblend = 0,
         },
       },
