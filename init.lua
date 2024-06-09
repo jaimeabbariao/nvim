@@ -412,6 +412,7 @@ require('lazy').setup({
         },
         eslint = {
           settings = {
+            workingDirectories = { mode = 'auto' },
             useFlatConfig = false, -- set if using flat config
             experimental = {
               useFlatConfig = nil, -- option not in the latest eslint-lsp
