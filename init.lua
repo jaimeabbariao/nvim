@@ -404,12 +404,13 @@ require('lazy').setup({
                 callSnippet = 'Replace',
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },
         eslint = {
           settings = {
+            workingDirectories = { mode = 'auto' },
             useFlatConfig = false, -- set if using flat config
             experimental = {
               useFlatConfig = nil, -- option not in the latest eslint-lsp
@@ -438,6 +439,7 @@ require('lazy').setup({
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
+
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
