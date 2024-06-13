@@ -384,7 +384,13 @@ require('lazy').setup({
         gopls = {},
         pyright = {},
         rust_analyzer = {},
-        cssls = {},
+        cssls = {
+          settings = {
+            css = {
+              validate = false,
+            },
+          },
+        },
         cssmodules_ls = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -402,7 +408,7 @@ require('lazy').setup({
           settings = {
             Lua = {
               completion = {
-                callSnippet = 'Replace',
+                callSnippet = '',
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               diagnostics = { disable = { 'missing-fields' } },
