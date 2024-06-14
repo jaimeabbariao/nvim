@@ -29,8 +29,8 @@ return {
             -- For a list of colors see `lua/cyberdream/colours.lua`
             -- Example:
             bg = '#00141A',
-            green = '#00ff00',
-            magenta = '#ff00ff',
+            -- green = '#00ff00',
+            -- magenta = '#ff00ff',
           },
         },
       }
