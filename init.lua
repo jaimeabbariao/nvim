@@ -273,7 +273,7 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         gopls = {},
-        pyright = {},
+        basedpyright = {},
         rust_analyzer = {},
         cssls = {},
         cssmodules_ls = {},
