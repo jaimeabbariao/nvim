@@ -275,7 +275,13 @@ require('lazy').setup({
         gopls = {},
         basedpyright = {},
         rust_analyzer = {},
-        cssls = {},
+        cssls = {
+          settings = {
+            css = {
+              validate = false,
+            },
+          },
+        },
         cssmodules_ls = {},
         vtsls = {},
         solargraph = {},
