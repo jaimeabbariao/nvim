@@ -2,19 +2,19 @@ return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
   opts = function()
-    local colors = require('cyberdream.colors').default
-    local cyberdream = require 'lualine.themes.cyberdream'
-    local copilot_colors = {
-      [''] = { fg = colors.grey, bg = colors.none },
-      ['Normal'] = { fg = colors.grey, bg = colors.none },
-      ['Warning'] = { fg = colors.red, bg = colors.none },
-      ['InProgress'] = { fg = colors.yellow, bg = colors.none },
-    }
+    -- local colors = require('cyberdream.colors').default
+    -- local cyberdream = require 'lualine.themes.cyberdream'
+    -- local copilot_colors = {
+    --   [''] = { fg = colors.grey, bg = colors.none },
+    --   ['Normal'] = { fg = colors.grey, bg = colors.none },
+    --   ['Warning'] = { fg = colors.red, bg = colors.none },
+    --   ['InProgress'] = { fg = colors.yellow, bg = colors.none },
+    -- }
     return {
       options = {
         component_separators = { left = ' ', right = ' ' },
         section_separators = { left = ' ', right = ' ' },
-        theme = cyberdream.get_theme,
+        -- theme = cyberdream.get_theme,
         globalstatus = true,
         disabled_filetypes = { statusline = { 'dashboard', 'alpha' } },
       },
@@ -43,14 +43,14 @@ return {
             cond = function()
               return package.loaded['nvim-navic'] and require('nvim-navic').is_available()
             end,
-            color = { fg = colors.grey, bg = colors.none },
+            -- color = { fg = colors.grey, bg = colors.none },
           },
         },
         lualine_x = {
           {
             require('lazy.status').updates,
             cond = require('lazy.status').has_updates,
-            color = { fg = colors.green },
+            -- color = { fg = colors.green },
           },
           {
             function()
@@ -62,13 +62,13 @@ return {
               local ok, clients = pcall(vim.lsp.get_clients, { name = 'copilot', bufnr = 0 })
               return ok and #clients > 0
             end,
-            color = function()
-              if not package.loaded['copilot'] then
-                return
-              end
-              local status = require('copilot.api').status.data
-              return copilot_colors[status.status] or copilot_colors['']
-            end,
+            -- color = function()
+            --   if not package.loaded['copilot'] then
+            --     return
+            --   end
+            --   local status = require('copilot.api').status.data
+            --   return copilot_colors[status.status] or copilot_colors['']
+            -- end,
           },
           { 'diff' },
         },
@@ -78,7 +78,7 @@ return {
           },
           {
             'location',
-            color = { fg = colors.cyan, bg = colors.none },
+            -- color = { fg = colors.cyan, bg = colors.none },
           },
         },
         lualine_z = {
