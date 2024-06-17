@@ -1,13 +1,13 @@
 return {
   {
     'craftzdog/solarized-osaka.nvim',
-    enabled = false,
-    -- lazy = false,
-    -- priority = 1000,
+    -- enabled = false,
+    lazy = false,
+    priority = 1000,
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings
-      transparent = false, -- Enable this to disable setting the background color
+      transparent = true, -- Enable this to disable setting the background color
       terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
       styles = {
         -- Style to be applied to different syntax groups
@@ -17,8 +17,8 @@ return {
         functions = { italic = false },
         variables = { italic = false },
         -- Background styles. Can be "dark", "transparent" or "normal"
-        sidebars = 'dark', -- style for sidebars, see below
-        floats = 'dark', -- style for floating windows
+        sidebars = 'transparent', -- style for sidebars, see below
+        floats = 'transparent', -- style for floating windows
       },
       sidebars = { 'qf', 'help' }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
       day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
@@ -26,8 +26,8 @@ return {
       dim_inactive = false, -- dims inactive windows
       lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
     },
-    -- init = function()
-    --   vim.cmd.colorscheme 'solarized-osaka'
-    -- end,
+    init = function()
+      vim.cmd.colorscheme 'solarized-osaka'
+    end,
   },
 }
