@@ -315,14 +315,29 @@ require('lazy').setup({
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+      local servers_with_navic_support = { 'lua_ls', 'vtsls', 'solargraph', 'gopls', 'basedpyright', 'rust_analyzer' }
+
+      local contains_server_with_navic_support = function(server_name)
+        for _, server in ipairs(servers_with_navic_support) do
+          if server == server_name then
+            return true
+          end
+        end
+
+        return false
+      end
+
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
             local navic = require 'nvim-navic'
+
             local server = servers[server_name] or {}
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            server.on_attach = function(client, bufnr)
-              navic.attach(client, bufnr)
+            if contains_server_with_navic_support(server_name) then
+              server.on_attach = function(client, bufnr)
+                navic.attach(client, bufnr)
+              end
             end
 
             require('lspconfig')[server_name].setup(server)
