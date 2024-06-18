@@ -6,8 +6,9 @@ return {
     opts = function()
       return {
         options = {
-          component_separators = { left = ' ', right = ' ' },
-          section_separators = { left = ' ', right = ' ' },
+          theme = 'solarized_dark',
+          component_separators = { left = '', right = '' },
+          section_separators = { left = '', right = '' },
           globalstatus = true,
           disabled_filetypes = { statusline = { 'dashboard', 'alpha' } },
         },
@@ -43,23 +44,6 @@ return {
               require('lazy.status').updates,
               cond = require('lazy.status').has_updates,
             },
-            {
-              function()
-                local icon = ' '
-                local status = require('copilot.api').status.data
-                return icon .. (status.message or '')
-              end,
-              cond = function()
-                local ok, clients = pcall(vim.lsp.get_clients, { name = 'copilot', bufnr = 0 })
-                return ok and #clients > 0
-              end,
-              color = function()
-                if not package.loaded['copilot'] then
-                  return
-                end
-                local status = require('copilot.api').status.data
-              end,
-            },
             { 'diff' },
           },
           lualine_y = {
@@ -67,9 +51,6 @@ return {
               'progress',
             },
             { 'filesize' },
-            {
-              'location',
-            },
           },
           lualine_z = {
             function()
