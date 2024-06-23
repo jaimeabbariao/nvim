@@ -79,9 +79,6 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-vim.keymap.set('n', '<leader>|', '<cmd>vsp<CR>', { desc = 'Split buffer vertically' })
-vim.keymap.set('n', '<leader>-', '<cmd>sp<CR>', { desc = 'Split buffer horizontally' })
-
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
@@ -133,18 +130,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.api.nvim_create_user_command('CopyRelPath', "call setreg('+', expand('%'))", {})
 
-vim.api.nvim_create_user_command('Fmt', function(args)
-  local range = nil
-  if args.count ~= -1 then
-    local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
-    range = {
-      start = { args.line1, 0 },
-      ['end'] = { args.line2, end_line:len() },
-    }
-  end
-  require('conform').format { async = true, lsp_fallback = true, range = range }
-end, { range = true })
-
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -170,6 +155,21 @@ if vim.g.vscode then
     { import = 'vscode' },
   }
 else
+  vim.keymap.set('n', '<leader>|', '<cmd>vsp<CR>', { desc = 'Split buffer vertically' })
+  vim.keymap.set('n', '<leader>-', '<cmd>sp<CR>', { desc = 'Split buffer horizontally' })
+
+  vim.api.nvim_create_user_command('Fmt', function(args)
+    local range = nil
+    if args.count ~= -1 then
+      local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+      range = {
+        start = { args.line1, 0 },
+        ['end'] = { args.line2, end_line:len() },
+      }
+    end
+    require('conform').format { async = true, lsp_fallback = true, range = range }
+  end, { range = true })
+
   require('lazy').setup({
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
     { 'numToStr/Comment.nvim', opts = {} },
