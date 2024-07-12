@@ -2,7 +2,8 @@ return {
   {
     'catppuccin/nvim',
     name = 'catppuccin',
-    priority = 1000,
+    -- priority = 1000,
+    enabled = false,
     config = function()
       require('catppuccin').setup {
         flavour = 'auto', -- latte, frappe, macchiato, mocha
@@ -54,7 +55,7 @@ return {
       }
 
       -- setup must be called before loading
-      vim.cmd.colorscheme 'catppuccin'
+      -- vim.cmd.colorscheme 'catppuccin'
     end,
   },
 }
