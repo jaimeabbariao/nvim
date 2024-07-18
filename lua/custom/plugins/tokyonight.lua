@@ -1,8 +1,9 @@
 return {
   {
     'folke/tokyonight.nvim',
-    lazy = false,
-    priority = 1000,
+    -- lazy = false,
+    -- priority = 1000,
+    enabled = false,
     opts = {
       styles = {
         comments = { italic = false },
@@ -11,8 +12,8 @@ return {
         variables = { italic = false },
       },
     },
-    init = function()
-      vim.cmd.colorscheme 'tokyonight-storm'
-    end,
+    -- init = function()
+    --   vim.cmd.colorscheme 'tokyonight-storm'
+    -- end,
   },
 }

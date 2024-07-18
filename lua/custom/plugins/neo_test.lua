@@ -16,14 +16,15 @@ return {
             jestCommand = 'npm run test --',
             jestConfigFile = function(file)
               -- I only have a use case for web right now
-              if string.find(file, 'web') then
+              if string.find(file, '/web/') then
                 return vim.fn.getcwd() .. '/web/' .. 'jest.config.cjs'
               end
 
               return vim.fn.getcwd()
             end,
             cwd = function(path)
-              if string.find(path, 'web') then
+              -- I only have a use case for web right now
+              if string.find(path, '/web/') then
                 return vim.fn.getcwd() .. '/web'
               end
 
